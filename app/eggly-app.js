@@ -51,7 +51,9 @@ angular.module('Eggly', [
     }
 
     function createBookmark(bookmark) {
-        bookmark.id = $scope.bookmarks.length;
+        var bookmarks = $scope.bookmarks;
+
+        bookmark.id = bookmarks[bookmarks.length - 1].id + 1;
         $scope.bookmarks.push(bookmark);
 
         resetCreateForm();
