@@ -23,9 +23,6 @@ const ngCategories = angular.module('categories', [
 })
 .controller('CategoriesCtrl', $scope => {
 
-})
-.controller('BookmarksCtrl', $scope => {
-    
-})
+});
 
 export default ngCategories;
