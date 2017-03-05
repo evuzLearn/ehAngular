@@ -1,8 +1,8 @@
-var angular = require('angular');
+import angular from 'angular';
 
 angular.module('Eggly', [
 
-]).controller('MainCtrl', function ($scope) {
+]).controller('MainCtrl', $scope => {
     $scope.categories = [
         { "id": 0, "name": "Development" },
         { "id": 1, "name": "Design" },
@@ -53,17 +53,17 @@ angular.module('Eggly', [
     }
 
     function createBookmark(bookmark) {
-        var bookmarks = $scope.bookmarks;
+        const { bookmarks } = $scope;
 
         bookmark.id = bookmarks[bookmarks.length - 1].id + 1;
-        $scope.bookmarks.push(bookmark);
+        bookmarks.push(bookmark);
 
         resetCreateForm();
     }
 
     function updateBookmark(bookmark) {
-        var index = $scope.bookmarks.findIndex(function(b) {
-            return b.id == bookmark.id;
+        const index = $scope.bookmarks.findIndex(b => {
+             return b.id == bookmark.id
         });
         $scope.bookmarks[index] = bookmark;
 
@@ -80,7 +80,7 @@ angular.module('Eggly', [
     }
 
     function deleteBookmark(bookmark) {
-        var index = $scope.bookmarks.findIndex(function(b){
+        const index = $scope.bookmarks.findIndex(b => {
             return b.id == bookmark.id;
         });
     
