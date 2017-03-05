@@ -1,3 +1,5 @@
+var angular = require('angular');
+
 angular.module('Eggly', [
 
 ]).controller('MainCtrl', function ($scope) {
