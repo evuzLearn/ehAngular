@@ -1,9 +1,21 @@
 import angular from 'angular';
+import categoriesTemplate from './categories/categories.tmpl.html'
 
 angular.module('Eggly', [
+    'ui.router',
     'categories',
     'categories.bookmarks'
-]).controller('MainCtrl', $scope => {
+])
+.config(($stateProvider, $urlRouterProvider) => {
+    $stateProvider.state('eggly', {
+        url: '/',
+        template: categoriesTemplate,
+        controller: 'MainCtrl'
+    });
+
+    $urlRouterProvider.otherwise("/");
+})
+.controller('MainCtrl', $scope => {
     $scope.categories = [
         { "id": 0, "name": "Development" },
         { "id": 1, "name": "Design" },
