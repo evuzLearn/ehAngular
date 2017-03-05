@@ -1,12 +1,12 @@
 module.exports = {
-    context: __dirname + '/src/app',
-    entry: './eggly-app.js',
+    context: __dirname + '/src',
+    entry: './index.js',
     output: {
-        path: __dirname + '/src',
+        path: __dirname + '/dist',
         filename: 'bundle.js'
     },
     devServer: {
-        contentBase: __dirname + '/src'
+        contentBase: __dirname + '/dist'
     },
     module: {
         loaders: [

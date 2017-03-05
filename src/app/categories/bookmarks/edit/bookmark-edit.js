@@ -1,3 +1,5 @@
 import angular from 'angular';
 
-angular.module('categories.bookmarks.edit', []);
+const ngBookmarksEdit = angular.module('categories.bookmarks.edit', []);
+
+export default ngBookmarksEdit;

@@ -1,5 +1,7 @@
 import angular from 'angular';
 
-angular.module('categories', [
+const ngCategories = angular.module('categories', [
     'eggly.models.categories'
 ]);
+
+export default ngCategories;

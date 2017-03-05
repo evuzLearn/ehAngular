@@ -1,3 +1,5 @@
 import angular from 'angular';
 
-angular.module('categories.bookmarks.create', []);
+const ngBookmarksCreate = angular.module('categories.bookmarks.create', []);
+
+export default ngBookmarksCreate;

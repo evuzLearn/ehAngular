@@ -1,3 +1,5 @@
 import angular from 'angular';
 
-angular.module('eggly.models.bookmarks', []);
+const ngModelBookmarks = angular.module('eggly.models.bookmarks', []);
+
+export default ngModelBookmarks;
