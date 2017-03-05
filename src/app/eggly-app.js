@@ -1,5 +1,4 @@
 import angular from 'angular';
-import categoriesTemplate from './categories/categories.tmpl.html'
 
 angular.module('Eggly', [
     'ui.router',
@@ -8,9 +7,8 @@ angular.module('Eggly', [
 ])
 .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider.state('eggly', {
-        url: '/',
-        template: categoriesTemplate,
-        controller: 'MainCtrl'
+        url: '',
+        abstract: true
     });
 
     $urlRouterProvider.otherwise("/");
