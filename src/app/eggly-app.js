@@ -1,7 +1,8 @@
 import angular from 'angular';
 
 angular.module('Eggly', [
-
+    'categories',
+    'categories.bookmarks'
 ]).controller('MainCtrl', $scope => {
     $scope.categories = [
         { "id": 0, "name": "Development" },
