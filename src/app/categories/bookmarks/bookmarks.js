@@ -18,14 +18,18 @@ const ngBookmarks = angular.module('categories.bookmarks', [
             }
         })
     })
-    .controller('BookmarksListCtrl', function ($stateParams, BookmarksModel) {
+    .controller('BookmarksListCtrl', function ($stateParams, BookmarksModel, CategoriesModel) {
         let bookmarksListCtrl = this;
 
-        bookmarksListCtrl.currentCategoryName = $stateParams.category;
+        CategoriesModel.setCurrentCategory($stateParams.category);
+
         BookmarksModel.getBookmarks()
             .then(result => {
                 bookmarksListCtrl.bookmarks = result;
             })
+
+        bookmarksListCtrl.getCurrentCategory = CategoriesModel.getCurrentCategory
+        bookmarksListCtrl.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName
     });
 
 export default ngBookmarks;

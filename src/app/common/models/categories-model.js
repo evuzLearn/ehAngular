@@ -3,9 +3,10 @@ import angular from 'angular';
 const ngModelCategories = angular.module('eggly.models.categories', [
 
 ])
-    .service('CategoriesModel', function ($http) {
+    .service('CategoriesModel', function ($http, $q) {
         let model = this;
         let categories;
+        let currentCategory;
         const URLs = {
             FETCH: 'data/categories.json'
         }
@@ -24,7 +25,22 @@ const ngModelCategories = angular.module('eggly.models.categories', [
                 .then(cacheCategories);
         }
 
-        model.getCategoriesByName = function () {
+        model.setCurrentCategory = function(categoryName) {
+            return model.getCategoryByName(categoryName)
+            .then(category => {
+                currentCategory = category;
+            })
+        }
+
+        model.getCurrentCategory = function() {
+            return currentCategory;
+        }
+
+        model.getCurrentCategoryName = function() {
+            return currentCategory ? currentCategory.name : '';
+        }
+
+        model.getCategoryByName = function (categoryName) {
             let deferred = $q.defer();
 
             function findCategory() {
