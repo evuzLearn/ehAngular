@@ -3,18 +3,25 @@ import angular from 'angular';
 const ngModelCategories = angular.module('eggly.models.categories', [
 
 ])
-    .service('CategoriesModel', function () {
+    .service('CategoriesModel', function ($http) {
         let model = this;
+        let categories;
+        const URLs = {
+            FETCH: 'data/categories.json'
+        }
 
-        let categories = [
-            { "id": 0, "name": "Development" },
-            { "id": 1, "name": "Design" },
-            { "id": 2, "name": "Exercise" },
-            { "id": 3, "name": "Humor" }
-        ];
+        function extract(result) {
+            return result.data;
+        }
+
+        function cacheCategories(result) {
+            categories = extract(result);
+            return categories;
+        }
 
         model.getCategories = () => {
-            return categories;
+            return $http.get(URLs.FETCH)
+                .then(cacheCategories);
         }
     });
 

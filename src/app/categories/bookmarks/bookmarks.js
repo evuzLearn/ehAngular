@@ -22,7 +22,10 @@ const ngBookmarks = angular.module('categories.bookmarks', [
         let bookmarksListCtrl = this;
 
         bookmarksListCtrl.currentCategoryName = $stateParams.category;
-        bookmarksListCtrl.bookmarks = BookmarksModel.getBookmarks();
+        BookmarksModel.getBookmarks()
+            .then(result => {
+                bookmarksListCtrl.bookmarks = result;
+            })
     });
 
 export default ngBookmarks;
