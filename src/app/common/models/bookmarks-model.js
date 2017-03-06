@@ -22,6 +22,11 @@ const ngModelBookmarks = angular.module('eggly.models.bookmarks', [
         model.getBookmarks = () => {
             return $http.get(URLs.FETCH).then(cacheBookmarks);
         }
+
+        model.createBookmark = function(bookmark) {
+            bookmark.id = bookmarks[bookmarks.length - 1].id + 1;
+            bookmarks.push(bookmark);
+        }
     });
 
 export default ngModelBookmarks;
