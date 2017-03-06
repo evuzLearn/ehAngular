@@ -8,6 +8,7 @@ module.exports = {
     devServer: {
         contentBase: __dirname + '/dist'
     },
+    devtool: 'source-map',
     module: {
         loaders: [
             {
