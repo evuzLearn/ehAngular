@@ -20,8 +20,29 @@ const ngModelCategories = angular.module('eggly.models.categories', [
         }
 
         model.getCategories = () => {
-            return $http.get(URLs.FETCH)
+            return (categories) ? $q.when(categories) : $http.get(URLs.FETCH)
                 .then(cacheCategories);
+        }
+
+        model.getCategoriesByName = function () {
+            let deferred = $q.defer();
+
+            function findCategory() {
+                return _.find(categories, c => {
+                    return c.name == categoryName;
+                })
+            }
+
+            if(categories) {
+                deferred.resolve(findCategory());
+            } else {
+                model.getCategories()
+                .then(result => {
+                    deferred.resolve(findCategory());
+                })
+            }
+
+            return deferred.promise;
         }
     });
 
