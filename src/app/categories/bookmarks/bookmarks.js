@@ -7,19 +7,22 @@ const ngBookmarks = angular.module('categories.bookmarks', [
     'eggly.models.categories',
     'eggly.models.bookmarks'
 ])
-.config($stateProvider => {
-    $stateProvider.state('eggly.categories.bookmarks', {
-        url: 'categories/:category',
-        views: {
-            'bookmarks@': {
-                controller: 'BookmarksCtrl', 
-                template: bookmarksTemplate
+    .config($stateProvider => {
+        $stateProvider.state('eggly.categories.bookmarks', {
+            url: 'categories/:category',
+            views: {
+                'bookmarks@': {
+                    controller: 'BookmarksListCtrl as bookmarksListCtrl',
+                    template: bookmarksTemplate
+                }
             }
-        }
+        })
     })
-})
-.controller('BookmarksCtrl', ($scope, $stateParams) => {
-    $scope.currentCategoryName = $stateParams.category;
-});
+    .controller('BookmarksListCtrl', function ($stateParams, BookmarksModel) {
+        let bookmarksListCtrl = this;
+
+        bookmarksListCtrl.currentCategoryName = $stateParams.category;
+        bookmarksListCtrl.bookmarks = BookmarksModel.getBookmarks();
+    });
 
 export default ngBookmarks;

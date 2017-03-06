@@ -11,18 +11,20 @@ const ngCategories = angular.module('categories', [
          url: '/',
          views: {
               'categories@': {
-                  controller: 'CategoriesCtrl',
+                  controller: 'CategoriesListCtrl as categoriesListCtrl',
                   template: categoriesTemplate
               },
               'bookmarks@': {
-                  controller: 'BookmarksCtrl',
+                  controller: 'BookmarksListCtrl as bookmarksListCtrl',
                   template: bookmarksTemplate
               }
          }
      })
 })
-.controller('CategoriesCtrl', $scope => {
+.controller('CategoriesListCtrl', function(CategoriesModel) {
+    let categoriesListCtrl = this;
 
+    categoriesListCtrl.categories = CategoriesModel.getCategories();
 });
 
 export default ngCategories;
