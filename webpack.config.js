@@ -1,6 +1,6 @@
 module.exports = {
     context: __dirname + '/src',
-    entry: './index.js',
+    entry: './app/app.js',
     output: {
         path: __dirname + '/dist',
         filename: 'bundle.js'
@@ -21,6 +21,27 @@ module.exports = {
                 test: /\.html$/,
                 loader: 'raw-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(sass|scss)$/, //Check for sass or scss file names
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ]
+            },
+            {
+                test: /\.css$/, 
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(ttf|otf|eot|svg|woff(2)?)$/,
+                use: [
+                    'url-loader'
+                ]
             }
         ]
     }
