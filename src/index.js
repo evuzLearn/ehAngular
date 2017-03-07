@@ -5,4 +5,5 @@ import bookmarkEdit from './app/categories/bookmarks/edit/bookmark-edit';
 import bookmarksModel from './app/common/models/bookmarks-model';
 import categories from './app/categories/categories';
 import categoriesModel from './app/common/models/categories-model';
+import ngAnimate from 'angular-animate';
 import router from 'angular-ui-router';
