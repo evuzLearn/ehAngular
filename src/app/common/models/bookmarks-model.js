@@ -65,6 +65,14 @@ const ngModelBookmarks = angular.module('eggly.models.bookmarks', [
 
             bookmarks[index] = bookmark;
         }
+
+        model.deleteBookmark = function(bookmark) {
+            const index = bookmarks.findIndex(b => {
+                return b.id == bookmark.id;
+            })
+
+            bookmarks.splice(index, 1)
+        }
     });
 
 export default ngModelBookmarks;

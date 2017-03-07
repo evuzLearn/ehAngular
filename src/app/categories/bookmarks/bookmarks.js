@@ -28,8 +28,9 @@ const ngBookmarks = angular.module('categories.bookmarks', [
                 bookmarksListCtrl.bookmarks = result;
             })
 
-        bookmarksListCtrl.getCurrentCategory = CategoriesModel.getCurrentCategory
-        bookmarksListCtrl.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName
+        bookmarksListCtrl.getCurrentCategory = CategoriesModel.getCurrentCategory;
+        bookmarksListCtrl.getCurrentCategoryName = CategoriesModel.getCurrentCategoryName;
+        bookmarksListCtrl.deleteBookmark = BookmarksModel.deleteBookmark;
     });
 
 export default ngBookmarks;
