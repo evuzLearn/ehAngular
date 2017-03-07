@@ -1,5 +1,6 @@
 class CategoriesModel {
-    constructor() {
+    constructor($q) {
+        this.$q = $q;
         this.categories = [
             { "id": 0, "name": "Development" },
             { "id": 1, "name": "Design" },
@@ -7,6 +8,11 @@ class CategoriesModel {
             { "id": 3, "name": "Humor" }
         ];
     }
+
+    getCategories() {
+        return this.$q.when(this.categories);
+    }
 }
 
+CategoriesModel.$inject = ['$q'];
 export default CategoriesModel;

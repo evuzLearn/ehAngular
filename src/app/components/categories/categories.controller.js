@@ -1,6 +1,9 @@
 class CategoriesController {
     constructor(CategoriesModel) {
-        this.categories = CategoriesModel.categories;
+        CategoriesModel.getCategories()
+        .then(result => {
+            this.categories = result;
+        })
     }
 }
 
