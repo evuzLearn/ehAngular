@@ -28,6 +28,14 @@ const ngCategories = angular.module('categories', [
             .then((result) => {
                 categoriesListCtrl.categories = result;
             });
+
+        function isCurrentCategory(category) {
+            const currentCategory = CategoriesModel.getCurrentCategory();
+
+            return currentCategory != null && currentCategory.id == category.id;
+        }
+
+        categoriesListCtrl.isCurrentCategory = isCurrentCategory;
     });
 
 export default ngCategories;
