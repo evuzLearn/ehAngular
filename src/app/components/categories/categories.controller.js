@@ -11,7 +11,13 @@ class CategoriesController {
     }
 
     onCategorySelected (category) {
-        console.log('Category Selected:', category)
+        this.CategoriesModel.setCurrentCategory(category);
+    }
+
+    isCurrentCategory(category) {
+        const currentCategory = this.CategoriesModel.getCurrentCategory();
+        
+        return currentCategory && currentCategory.id == category.id;
     }
 }
 
