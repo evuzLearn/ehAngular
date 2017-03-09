@@ -1,6 +1,7 @@
 class CategoriesModel {
-    constructor($q) {
+    constructor($q, $rootScope) {
         this.$q = $q;
+        this.$rootScope = $rootScope;
         this.currentCategory = null;
 
         this.categories = [
@@ -17,6 +18,7 @@ class CategoriesModel {
 
     setCurrentCategory(category) {
         this.currentCategory = category;
+        this.$rootScope.$broadcast('onCurrentCategoryUpdated')
     }
 
     getCurrentCategory() {
@@ -24,5 +26,5 @@ class CategoriesModel {
     }
 }
 
-CategoriesModel.$inject = ['$q'];
+CategoriesModel.$inject = ['$q', '$rootScope'];
 export default CategoriesModel;

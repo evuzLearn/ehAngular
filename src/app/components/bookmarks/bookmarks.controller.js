@@ -1,5 +1,6 @@
 class BookmarsController {
-    constructor(BookmarksModel, CategoriesModel) {
+    constructor(BookmarksModel, CategoriesModel, $scope) {
+        this.$scope = $scope;
         this.BookmarksModel = BookmarksModel;
         this.CategoriesModel = CategoriesModel;
     }
@@ -10,6 +11,7 @@ class BookmarsController {
             .then(results => {
                 this.bookmarks = results;
             })
+            this.$scope.$on('onCurrentCategoryUpdated', this.reset.bind(this))
         this.getCurrentCategory
             = CategoriesModel.getCurrentCategory.bind(CategoriesModel);
         this.deleteBookmark = this.BookmarksModel.deleteBookmark.bind(BookmarksModel);
@@ -50,5 +52,5 @@ class BookmarsController {
     }
 }
 
-BookmarsController.$inject = ['BookmarksModel', 'CategoriesModel'];
+BookmarsController.$inject = ['BookmarksModel', 'CategoriesModel', '$scope'];
 export default BookmarsController;
