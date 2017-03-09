@@ -15,9 +15,35 @@ class BookmarksModel {
     }
 
     getBookmarks() {
-        const {$q, bookmarks} = this;
+        const { $q, bookmarks } = this;
 
         return $q.when(bookmarks);
+    }
+
+    createBookmark(bookmark) {
+        let {bookmarks} = this;
+        const one = 1;
+
+        bookmark.id = bookmarks[bookmarks.length - one] + one;
+        this.bookmarks.push(bookmark);
+    }
+
+    updateBookmark(bookmark) {
+        const index = this.findIndex(bookmark.id);
+        this.bookmarks[index] = bookmark;
+    }
+
+    deleteBookmark(bookmark) {
+        const index = this.findIndex(bookmark.id);
+        const elementsToRemove = 1;
+
+        this.bookmarks.splice(index, elementsToRemove);
+    }
+
+    findIndex(bookmarkId) {
+        return this.bookmarks.findIndex(b => {
+            return b.id == bookmarkId;
+        })
     }
 }
 
